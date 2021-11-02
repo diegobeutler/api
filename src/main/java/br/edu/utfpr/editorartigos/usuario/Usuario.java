@@ -1,5 +1,7 @@
-package br.edu.utfpr.api.model;
+package br.edu.utfpr.editorartigos.usuario;
 
+import br.edu.utfpr.editorartigos.model.Categoria;
+import br.edu.utfpr.editorartigos.model.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,18 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class Usuario implements Serializable,
-        UserDetails {
+public class Usuario implements Serializable, UserDetails {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +42,7 @@ public class Usuario implements Serializable,
 
     @ManyToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
-    private Set<Permissao> permissoes;
+    private Set<Permissao> permissoes = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
@@ -52,9 +50,7 @@ public class Usuario implements Serializable,
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> list = new ArrayList<>();
-        list.addAll(permissoes);
-        return list;
+        return new HashSet<GrantedAuthority>(permissoes);
     }
 
     @Override

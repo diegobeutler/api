@@ -1,4 +1,4 @@
-package br.edu.utfpr.api.model;
+package br.edu.utfpr.editorartigos.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
