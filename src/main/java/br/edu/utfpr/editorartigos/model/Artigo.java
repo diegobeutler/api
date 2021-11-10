@@ -36,4 +36,8 @@ public class Artigo {
         @JoinColumn(name = "id_categoria")
         private Categoria categoria;
 
+        @ManyToOne
+        @JoinColumn(name = "id_usuario")
+        private Usuario autor;
+
 }

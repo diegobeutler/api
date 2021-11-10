@@ -1,8 +1,9 @@
-package br.edu.utfpr.editorartigos.usuario;
+package br.edu.utfpr.editorartigos.service.impl;
 
-import br.edu.utfpr.editorartigos.crud.CrudServiceImpl;
 import br.edu.utfpr.editorartigos.exception.UsuarioJaExisteException;
+import br.edu.utfpr.editorartigos.model.Usuario;
 import br.edu.utfpr.editorartigos.repository.UsuarioRepository;
+import br.edu.utfpr.editorartigos.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

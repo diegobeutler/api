@@ -1,4 +1,4 @@
-package br.edu.utfpr.editorartigos.crud;
+package br.edu.utfpr.editorartigos.service;
 
 import org.springframework.data.domain.Sort;
 
@@ -16,4 +16,7 @@ public interface CrudService<T, ID> {
     <S extends T> S saveAndFlush(S entity);
 
     <S extends T> S save(S entity) throws Exception;
+
+    void delete(ID id);
+
 }

@@ -1,7 +1,5 @@
-package br.edu.utfpr.editorartigos.usuario;
+package br.edu.utfpr.editorartigos.model;
 
-import br.edu.utfpr.editorartigos.model.Categoria;
-import br.edu.utfpr.editorartigos.model.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
