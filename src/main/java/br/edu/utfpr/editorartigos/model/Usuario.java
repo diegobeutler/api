@@ -47,7 +47,7 @@ public class Usuario implements Serializable, UserDetails {
 
     @ManyToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
-    private List<Categoria> interesses;
+    private Set<Categoria> interesses;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

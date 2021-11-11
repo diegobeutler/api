@@ -19,4 +19,6 @@ public interface CrudService<T, ID> {
 
     void delete(ID id);
 
+    T findOne(ID id);
+
 }

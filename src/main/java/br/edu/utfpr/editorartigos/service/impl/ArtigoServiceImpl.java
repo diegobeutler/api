@@ -3,15 +3,19 @@ package br.edu.utfpr.editorartigos.service.impl;
 import br.edu.utfpr.editorartigos.model.Artigo;
 import br.edu.utfpr.editorartigos.repository.ArtigoRepository;
 import br.edu.utfpr.editorartigos.service.ArtigoService;
+import br.edu.utfpr.editorartigos.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements ArtigoService {
 
     private final ArtigoRepository artigoRepository;
+    private final UsuarioService usuarioService;
 
     @Override
     public JpaRepository<Artigo, Long> getRepository() {
@@ -24,8 +28,11 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
     }
 
     @Override
-    public Artigo cadastrarArtigo(Artigo categoria) throws Exception {
-        return save(categoria);
+    public Artigo cadastrarArtigo(Artigo artigo) throws Exception {
+        if (artigo.getId() == null) {
+            artigo.setAutor(usuarioService.getUsuarioLogado());
+        }
+        return save(artigo);
     }
 
     @Override
@@ -33,5 +40,8 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
         delete(id);
     }
 
-
+    @Override
+    public List<Artigo> listarTodos() {
+        return findAll();
+    }
 }
