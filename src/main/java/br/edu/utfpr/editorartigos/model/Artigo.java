@@ -23,7 +23,7 @@ public class Artigo {
         private String titulo;
 
         @Column(nullable = false)
-        private String Subtítulo;
+        private String subtitulo;
 
         @Column(nullable = false)
         private String palavrasChave;
