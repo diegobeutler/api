@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoriaServiceImpl extends CrudServiceImpl<Categoria, Long> implements CategoriaService{
@@ -35,5 +37,8 @@ public class CategoriaServiceImpl extends CrudServiceImpl<Categoria, Long> imple
         delete(id);
     }
 
-
+    @Override
+    public List<Categoria> listarTodos() {
+        return findAll();
+    }
 }

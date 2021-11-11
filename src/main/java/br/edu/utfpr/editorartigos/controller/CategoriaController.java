@@ -5,8 +5,6 @@ import br.edu.utfpr.editorartigos.service.CategoriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/categoria")
 @RequiredArgsConstructor
@@ -15,20 +13,27 @@ public class CategoriaController {
     private final CategoriaService categoriaService;
 
     @PostMapping("incluir")
-    private Categoria incluir(@Valid @RequestBody Categoria categoria) throws Exception {
+    private Categoria incluir(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
     @PostMapping("alterar")
-    private Categoria alterar(@Valid @RequestBody Categoria categoria) throws Exception {
+    private Categoria alterar(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
-    @DeleteMapping("excluir")
-    private void excluir(@RequestBody Long id) throws Exception {
+    @DeleteMapping
+    private void excluir(@RequestBody Long id) {
         categoriaService.deletarCategoria(id);
     }
 
+    @GetMapping("pesquisar-todos")
+    private void pesquisarTodos() {
+        categoriaService.listarTodos();
+    }
 
-
+    @GetMapping("{id}")
+    private Categoria findOne(@PathVariable("id") Long id) {
+        return categoriaService.findOne(id);
+    }
 }
