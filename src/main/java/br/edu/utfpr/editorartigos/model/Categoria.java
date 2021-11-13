@@ -3,6 +3,8 @@ package br.edu.utfpr.editorartigos.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
@@ -10,7 +12,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria {
+public class Categoria implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;

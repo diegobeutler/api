@@ -2,9 +2,10 @@ package br.edu.utfpr.editorartigos.service;
 
 import org.springframework.data.domain.Sort;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface CrudService<T, ID> {
+public interface CrudService<T, ID  extends Serializable> {
     List<T> findAll();
 
     List<T> findAll(Sort sort);

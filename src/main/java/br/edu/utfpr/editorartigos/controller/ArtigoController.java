@@ -6,8 +6,10 @@ import br.edu.utfpr.editorartigos.service.ArtigoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/artigo")
+@RequestMapping("artigo/")
 @RequiredArgsConstructor
 public class ArtigoController {
     private final ArtigoService artigoService;
@@ -29,8 +31,8 @@ public class ArtigoController {
 
 
     @GetMapping("pesquisar-todos")
-    private void pesquisarTodos() {
-        artigoService.listarTodos();
+    private List<Artigo> pesquisarTodos() {
+        return artigoService.listarTodos();
     }
 
     @GetMapping("{id}")

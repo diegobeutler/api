@@ -7,11 +7,14 @@ import br.edu.utfpr.editorartigos.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/artigo")
+@RequestMapping("usuario")
 @RequiredArgsConstructor
 public class UsuarioController {
     private final UsuarioService usuarioService;
+
 
     @PostMapping("incluir")
     private Usuario incluir(@RequestBody Usuario usuario) throws Exception {
@@ -29,8 +32,8 @@ public class UsuarioController {
     }
 
     @GetMapping("pesquisar-todos")
-    private void pesquisarTodos() {
-        usuarioService.listarTodos();
+    private List<Usuario> pesquisarTodos() {
+        return usuarioService.listarTodos();
     }
 
     @GetMapping("{id}")

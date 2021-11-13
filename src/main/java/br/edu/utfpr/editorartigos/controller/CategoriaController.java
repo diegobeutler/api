@@ -5,8 +5,10 @@ import br.edu.utfpr.editorartigos.service.CategoriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("categoria/")
 @RequiredArgsConstructor
 public class CategoriaController {
 
@@ -17,7 +19,7 @@ public class CategoriaController {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
-    @PostMapping("alterar")
+    @PutMapping("alterar")
     private Categoria alterar(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }
@@ -28,8 +30,8 @@ public class CategoriaController {
     }
 
     @GetMapping("pesquisar-todos")
-    private void pesquisarTodos() {
-        categoriaService.listarTodos();
+    private List<Categoria> pesquisarTodos() {
+        return categoriaService.listarTodos();
     }
 
     @GetMapping("{id}")
