@@ -1,7 +1,6 @@
 package br.edu.utfpr.editorartigos.controller;
 
 import br.edu.utfpr.editorartigos.model.Artigo;
-import br.edu.utfpr.editorartigos.model.Categoria;
 import br.edu.utfpr.editorartigos.service.ArtigoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class ArtigoController {
         return artigoService.cadastrarArtigo(artigo);
     }
 
-    @PostMapping("alterar")
+    @PostMapping("atualizar")
     private Artigo alterar(@RequestBody Artigo artigo) throws Exception {
         return artigoService.cadastrarArtigo(artigo);
     }

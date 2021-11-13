@@ -1,13 +1,11 @@
 package br.edu.utfpr.editorartigos.service.impl;
 
 import br.edu.utfpr.editorartigos.exception.UsuarioJaExisteException;
-import br.edu.utfpr.editorartigos.model.Categoria;
 import br.edu.utfpr.editorartigos.model.Usuario;
 import br.edu.utfpr.editorartigos.repository.PermissaoRepository;
 import br.edu.utfpr.editorartigos.repository.UsuarioRepository;
 import br.edu.utfpr.editorartigos.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +26,7 @@ public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long> implement
 
     private final PasswordEncoder encoder;
 
-    private PermissaoRepository permissaoRepository;
+    private final PermissaoRepository permissaoRepository;
 
 
     @Override

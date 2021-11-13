@@ -19,7 +19,7 @@ public class CategoriaController {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
-    @PutMapping("alterar")
+    @PutMapping("atualizar")
     private Categoria alterar(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }

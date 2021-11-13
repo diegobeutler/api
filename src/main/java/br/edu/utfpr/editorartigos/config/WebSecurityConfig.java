@@ -1,7 +1,7 @@
 package br.edu.utfpr.editorartigos.config;
 
 import br.edu.utfpr.editorartigos.service.impl.UsuarioServiceImpl;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -16,10 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-	private final UsuarioServiceImpl usuarioServiceImpl;
+	@Autowired
+	private UsuarioServiceImpl usuarioServiceImpl;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

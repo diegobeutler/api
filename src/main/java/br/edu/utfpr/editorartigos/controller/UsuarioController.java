@@ -1,8 +1,6 @@
 package br.edu.utfpr.editorartigos.controller;
 
 import br.edu.utfpr.editorartigos.model.Usuario;
-import br.edu.utfpr.editorartigos.model.Usuario;
-import br.edu.utfpr.editorartigos.service.UsuarioService;
 import br.edu.utfpr.editorartigos.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +19,7 @@ public class UsuarioController {
         return usuarioService.cadastrarUsuario(usuario);
     }
 
-    @PostMapping("alterar")
+    @PostMapping("atualizar")
     private Usuario alterar(@RequestBody Usuario usuario) throws Exception {
         return usuarioService.cadastrarUsuario(usuario);
     }
