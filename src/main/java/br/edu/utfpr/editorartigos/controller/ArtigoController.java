@@ -18,7 +18,7 @@ public class ArtigoController {
         return artigoService.cadastrarArtigo(artigo);
     }
 
-    @PostMapping("atualizar")
+    @PutMapping("atualizar")
     private Artigo alterar(@RequestBody Artigo artigo) throws Exception {
         return artigoService.cadastrarArtigo(artigo);
     }

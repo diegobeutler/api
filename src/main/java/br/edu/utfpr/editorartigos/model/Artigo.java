@@ -3,6 +3,8 @@ package br.edu.utfpr.editorartigos.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Artigo {
+public class Artigo implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
@@ -33,8 +35,11 @@ public class Artigo {
         @JoinColumn(name = "id_categoria")
         private Categoria categoria;
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "id_usuario")
         private Usuario autor;
 
+        public void setPalavrasChave(ArrayList<String> palavrasChave) {
+                this.palavrasChave = palavrasChave.toString();
+        }
 }

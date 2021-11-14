@@ -29,13 +29,10 @@ public class Usuario implements Serializable, UserDetails {
     @NotNull
     private String sobrenome;
 
-    @NotNull
-    private String apelido;
-
     @Column(length = 100, nullable = false)
     private String username;
 
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL,

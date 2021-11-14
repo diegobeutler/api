@@ -29,9 +29,10 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
 
     @Override
     public Artigo cadastrarArtigo(Artigo artigo) throws Exception {
-        if (artigo.getId() == null) {
-            artigo.setAutor(usuarioService.getUsuarioLogado());
-        }
+//        if (artigo.getId() == null) {
+//            artigo.setAutor(usuarioService.getUsuarioLogado());
+//        }
+        artigo.setAutor(usuarioService.findOne(1L));// todo remover após feito a parte de login
         return save(artigo);
     }
 

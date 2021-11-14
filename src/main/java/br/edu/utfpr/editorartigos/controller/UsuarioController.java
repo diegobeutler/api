@@ -19,8 +19,8 @@ public class UsuarioController {
         return usuarioService.cadastrarUsuario(usuario);
     }
 
-    @PostMapping("atualizar")
-    private Usuario alterar(@RequestBody Usuario usuario) throws Exception {
+    @PutMapping("atualizar")
+    private Usuario atualizar(@RequestBody Usuario usuario) throws Exception {
         return usuarioService.cadastrarUsuario(usuario);
     }
 
