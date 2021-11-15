@@ -36,7 +36,7 @@ public class ArtigoController {
 
     @GetMapping("{id}")
     private Artigo findOne(@PathVariable("id") Long id) {
-        return artigoService.findOne(id);
+        return artigoService.findById(id);
     }
 
 }
