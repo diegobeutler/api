@@ -61,8 +61,8 @@ public abstract class CrudServiceImpl<T, ID  extends Serializable> implements Cr
 
     @Override
     @Transactional(readOnly = true)
-    public T findOne(ID id) {
-        return getRepository().getById(id);
+    public T findById(ID id) {
+        return getRepository().findById(id).orElse(null);
     }
 
 }

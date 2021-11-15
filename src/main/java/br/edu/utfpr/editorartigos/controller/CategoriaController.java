@@ -36,6 +36,6 @@ public class CategoriaController {
 
     @GetMapping("{id}")
     private Categoria findOne(@PathVariable("id") Long id) {
-        return categoriaService.findOne(id);
+        return categoriaService.findById(id);
     }
 }

@@ -20,6 +20,6 @@ public interface CrudService<T, ID  extends Serializable> {
 
     void delete(ID id);
 
-    T findOne(ID id);
+    T findById(ID id);
 
 }
