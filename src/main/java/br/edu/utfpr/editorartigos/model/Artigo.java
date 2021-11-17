@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -38,8 +37,4 @@ public class Artigo implements Serializable {
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "id_usuario")
         private Usuario autor;
-
-        public void setPalavrasChave(ArrayList<String> palavrasChave) {
-                this.palavrasChave = palavrasChave.toString();
-        }
 }
