@@ -3,6 +3,7 @@ package br.edu.utfpr.editorartigos.config;
 import br.edu.utfpr.editorartigos.service.impl.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,8 +32,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.and().logout()
 			.logoutSuccessUrl("/login")
 			.and().authorizeRequests()
-//				.antMatchers("/categoria/**").hasAnyRole( "ADMIN")
-//				.antMatchers("/categoria/**").permitAll()
+//				.antMatchers(HttpMethod.POST,"/categorias/**").hasAnyRole( "ADMIN")
+//				.antMatchers(HttpMethod.PUT,"/categorias/**").hasAnyRole( "ADMIN")
+//				.antMatchers(HttpMethod.DELETE,"/categorias/**").hasAnyRole( "ADMIN")
+//				.antMatchers(HttpMethod.GET,"/categorias/**").authenticated()
+//				.antMatchers("/artigos/**").authenticated()
+//				.antMatchers("/usuario").permitAll()
+//				.antMatchers("/login").permitAll()
 				.antMatchers("/**").permitAll();
 	}
 	

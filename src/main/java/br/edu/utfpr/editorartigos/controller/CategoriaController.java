@@ -24,8 +24,8 @@ public class CategoriaController {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
-    @DeleteMapping
-    private void excluir(@RequestBody Long id) {
+    @DeleteMapping("{id}")
+    private void excluir(@PathVariable("id") Long id) {
         categoriaService.deletarCategoria(id);
     }
 

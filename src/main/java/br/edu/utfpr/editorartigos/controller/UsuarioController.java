@@ -24,8 +24,8 @@ public class UsuarioController {
         return usuarioService.cadastrarUsuario(usuario);
     }
 
-    @DeleteMapping("excluir")
-    private void excluir(@RequestBody Long id) throws Exception {
+    @DeleteMapping("{id}")
+    private void excluir(@PathVariable("id") Long id) {
         usuarioService.deletarUsuario(id);
     }
 

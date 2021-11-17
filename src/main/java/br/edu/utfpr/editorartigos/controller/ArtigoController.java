@@ -23,8 +23,8 @@ public class ArtigoController {
         return artigoService.cadastrarArtigo(artigo);
     }
 
-    @DeleteMapping("excluir")
-    private void excluir(@RequestBody Long id) throws Exception {
+    @DeleteMapping("{id}")
+    private void excluir(@PathVariable("id") Long id) {
         artigoService.deletarArtigo(id);
     }
 
