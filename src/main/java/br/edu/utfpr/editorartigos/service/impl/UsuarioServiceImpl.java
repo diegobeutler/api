@@ -35,12 +35,6 @@ public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long> implement
     }
 
     @Override
-    public Usuario criarUsuario(Usuario usuario) throws Exception {
-
-        return save(usuario);
-    }
-
-    @Override
     public void valid(Usuario entity) throws UsuarioJaExisteException {
         if (usuarioRepository.findUsuarioByUsername(entity.getUsername()).isPresent())
             throw new UsuarioJaExisteException("Usuario " + entity.getUsername() + " já existe");
