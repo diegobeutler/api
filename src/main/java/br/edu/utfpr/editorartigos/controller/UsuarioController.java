@@ -39,4 +39,8 @@ public class UsuarioController {
         return usuarioService.findById(id);
     }
 
+    @GetMapping("logado")
+    private Usuario findUsuarioLogado() {
+        return usuarioService.getUsuarioLogado();
+    }
 }
