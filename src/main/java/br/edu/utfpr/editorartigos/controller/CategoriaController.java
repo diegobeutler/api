@@ -15,27 +15,27 @@ public class CategoriaController {
     private final CategoriaService categoriaService;
 
     @PostMapping("incluir")
-    private Categoria incluir(@RequestBody Categoria categoria) throws Exception {
+    public Categoria incluir(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
     @PutMapping("atualizar")
-    private Categoria atualizar(@RequestBody Categoria categoria) throws Exception {
+    public Categoria atualizar(@RequestBody Categoria categoria) throws Exception {
         return categoriaService.cadastrarCategoria(categoria);
     }
 
     @DeleteMapping("{id}")
-    private void excluir(@PathVariable("id") Long id) {
+    public void excluir(@PathVariable("id") Long id) {
         categoriaService.deletarCategoria(id);
     }
 
     @GetMapping("pesquisar-todos")
-    private List<Categoria> pesquisarTodos() {
+    public List<Categoria> pesquisarTodos() {
         return categoriaService.listarTodos();
     }
 
     @GetMapping("{id}")
-    private Categoria findOne(@PathVariable("id") Long id) {
+    public Categoria findOne(@PathVariable("id") Long id) {
         return categoriaService.findById(id);
     }
 }

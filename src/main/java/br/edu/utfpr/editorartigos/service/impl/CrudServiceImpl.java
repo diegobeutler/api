@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @RequiredArgsConstructor
-public abstract class CrudServiceImpl<T, ID  extends Serializable> implements CrudService<T, ID> {
+public abstract class CrudServiceImpl<T, ID extends Serializable> implements CrudService<T, ID> {
 
     public abstract JpaRepository<T, ID> getRepository();
 
@@ -60,7 +60,7 @@ public abstract class CrudServiceImpl<T, ID  extends Serializable> implements Cr
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public T findById(ID id) {
         return getRepository().findById(id).orElse(null);
     }
