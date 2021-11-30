@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("artigo/")
@@ -14,29 +15,47 @@ public class ArtigoController {
     private final ArtigoService artigoService;
 
     @PostMapping("incluir")
-    private Artigo incluir(@RequestBody Artigo artigo) throws Exception {
+    public Artigo incluir(@RequestBody Artigo artigo) throws Exception {
         return artigoService.cadastrarArtigo(artigo);
     }
 
     @PutMapping("atualizar")
-    private Artigo alterar(@RequestBody Artigo artigo) throws Exception {
+    public Artigo alterar(@RequestBody Artigo artigo) throws Exception {
         return artigoService.cadastrarArtigo(artigo);
     }
 
     @DeleteMapping("{id}")
-    private void excluir(@PathVariable("id") Long id) {
+    public void excluir(@PathVariable("id") Long id) {
         artigoService.deletarArtigo(id);
     }
 
 
     @GetMapping("pesquisar-todos")
-    private List<Artigo> pesquisarTodos() {
+    public List<Artigo> pesquisarTodos() {
         return artigoService.listarTodos();
     }
 
     @GetMapping("{id}")
-    private Artigo findOne(@PathVariable("id") Long id) {
+    public Artigo findOne(@PathVariable("id") Long id) {
         return artigoService.findById(id);
     }
 
+    @GetMapping("usuario/{usuarioId}")
+    public Set<Artigo> artigosPorUsuario(@PathVariable String usuarioId) {
+        return artigoService.artigosPorUsuario(Long.parseLong(usuarioId));
+    }
+
+    @GetMapping("destaque")
+    public Set<Artigo> artigosPorDestaque() {
+        return artigoService.artigosMaisVistos();
+    }
+
+    @GetMapping("recomendacao/{usuarioId}")
+    public Set<Artigo> artigosRecomendacao(@PathVariable String usuarioId) {
+        return artigoService.recomendacaoPorUsuario(Long.parseLong(usuarioId));
+    }
+
+    public Set<Artigo> artigosFiltro(){
+        return null;
+    }
 }
