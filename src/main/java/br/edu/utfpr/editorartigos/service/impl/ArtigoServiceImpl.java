@@ -51,15 +51,15 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
 
     @Override
     @Transactional
-    public Set<Artigo> artigosPorUsuario(long usuarioId) {
-        return artigoRepository.findArtigosByAutorId(usuarioId);
+    public Set<Artigo> artigosPorUsuario() {
+        return artigoRepository.findArtigosByAutorId(usuarioService.getUsuarioLogado().getId());
 
     }
 
     @Override
     @Transactional
-    public Set<Artigo> recomendacaoPorUsuario(Long usuarioId) {
-        var interesses = getInteresses(usuarioId);
+    public Set<Artigo> recomendacaoPorUsuario() {
+        var interesses = getInteresses(usuarioService.getUsuarioLogado().getId());
         return artigoRepository.findArtigosByCategoria_IdIn(interesses);
     }
 
