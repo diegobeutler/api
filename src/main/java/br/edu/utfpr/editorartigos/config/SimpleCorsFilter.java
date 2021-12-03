@@ -1,5 +1,6 @@
 package br.edu.utfpr.editorartigos.config;
 
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -8,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
-
 @Component
-@Order(HIGHEST_PRECEDENCE)
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class SimpleCorsFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req,
+                         ServletResponse res,
+                         FilterChain filterChain) throws IOException, ServletException {
         final HttpServletResponse response = (HttpServletResponse) res;
 
         response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -25,18 +26,21 @@ public class SimpleCorsFilter implements Filter {
                 + "Content-Type, Accept, X-CSRF-TOKEN, Cache-Control, DNT, X-CustomHeader, Keep-Alive, "
                 + "User-Agent, If-Modified-Since, Content-Range, Range");
         response.setHeader("Access-Control-Max-Age", "3600");
-        if ("OPTIONS".equalsIgnoreCase(((HttpServletRequest) req).getMethod())) {
+
+        if("OPTION".equalsIgnoreCase(((HttpServletRequest) req).getMethod())){
             response.setStatus(HttpServletResponse.SC_OK);
         } else {
-            chain.doFilter(req, res);
+            filterChain.doFilter(req, res);
         }
     }
 
     @Override
-    public void destroy() {
+    public void init(FilterConfig filterConfig) throws ServletException {
+        Filter.super.init(filterConfig);
     }
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
+    public void destroy() {
+        Filter.super.destroy();
     }
 }
