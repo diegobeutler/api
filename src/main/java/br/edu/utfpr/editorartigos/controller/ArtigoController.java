@@ -56,7 +56,7 @@ public class ArtigoController {
     }
 
     public List<Artigo> artigosFiltro(String query){
-        return artigoService.findArtigoByTitulo(query);
+        return artigoService.findArtigoByTituloOrPalavrasChave(query);
 
     }
 }

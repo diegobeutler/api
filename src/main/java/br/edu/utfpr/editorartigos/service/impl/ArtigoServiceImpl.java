@@ -92,8 +92,7 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
 
 
     @Override
-    public List<Artigo> findArtigoByTitulo(String query) {
-        return List.of(Artigo.builder().build());
-//        return  artigoRepository.findArtigoByTituloOrPalavrasChave(query);
+    public List<Artigo> findArtigoByTituloOrPalavrasChave(String query) {
+        return  artigoRepository.findArtigoByTituloContainsOrPalavrasChaveContainsOrderByTitulo(query, query);
     }
 }
