@@ -37,6 +37,7 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
     public Artigo cadastrarArtigo(Artigo artigo) throws Exception {
         if (artigo.getId() == null) {
             artigo.setAutor(usuarioService.getUsuarioLogado());
+            artigo.setVisualizacoes(0L);
         }
         return save(artigo);
     }
