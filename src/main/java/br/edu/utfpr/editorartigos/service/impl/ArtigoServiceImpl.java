@@ -2,6 +2,7 @@ package br.edu.utfpr.editorartigos.service.impl;
 
 import br.edu.utfpr.editorartigos.model.Artigo;
 import br.edu.utfpr.editorartigos.model.Categoria;
+import br.edu.utfpr.editorartigos.model.Usuario;
 import br.edu.utfpr.editorartigos.repository.ArtigoRepository;
 import br.edu.utfpr.editorartigos.service.ArtigoService;
 import br.edu.utfpr.editorartigos.service.UsuarioService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -52,14 +54,14 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
     @Override
     @Transactional
     public Set<Artigo> artigosPorUsuario() {
-        return artigoRepository.findArtigosByAutorId(usuarioService.getUsuarioLogado().getId());
+        return artigoRepository.findArtigosByAutorId(Optional.ofNullable(usuarioService.getUsuarioLogado()).map(Usuario::getId).orElse(null));
 
     }
 
     @Override
     @Transactional
     public Set<Artigo> recomendacaoPorUsuario() {
-        var interesses = getInteresses(usuarioService.getUsuarioLogado().getId());
+        var interesses = getInteresses(Optional.ofNullable(usuarioService.getUsuarioLogado()).map(Usuario::getId).orElse(null));
         return artigoRepository.findArtigosByCategoria_IdIn(interesses);
     }
 
@@ -80,12 +82,18 @@ public class ArtigoServiceImpl extends CrudServiceImpl<Artigo, Long> implements 
 
     @Override
     public Artigo findById(Long aLong) {
-
         var artigo = super.findById(aLong);
         if (artigo != null) {
             artigo.incrementarVisualizacoes();
             artigoRepository.saveAndFlush(artigo);
         }
         return artigo;
+    }
+
+
+    @Override
+    public List<Artigo> findArtigoByTitulo(String query) {
+        return List.of(Artigo.builder().build());
+//        return  artigoRepository.findArtigoByTituloOrPalavrasChave(query);
     }
 }

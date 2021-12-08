@@ -55,7 +55,8 @@ public class ArtigoController {
         return artigoService.recomendacaoPorUsuario();
     }
 
-    public Set<Artigo> artigosFiltro(){
-        return null;
+    public List<Artigo> artigosFiltro(String query){
+        return artigoService.findArtigoByTitulo(query);
+
     }
 }
