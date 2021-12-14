@@ -18,7 +18,7 @@ public class ControllerAdviceHandlerException extends ResponseEntityExceptionHan
         return new ResponseEntity<>((errorResponse), HttpStatus.BAD_GATEWAY);
     }
 
-    @ExceptionHandler(value = CategoriaJaExisteException.class)
+    @ExceptionHandler(value = UsuarioJaExisteException.class)
     public ResponseEntity<ErrorResponse> usuarioJaExiste(UsuarioJaExisteException exception, WebRequest request) {
         var errorResponse = new ErrorResponse(exception.getMessage());
         return new ResponseEntity<>((errorResponse), HttpStatus.BAD_GATEWAY);
